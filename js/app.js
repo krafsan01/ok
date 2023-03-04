@@ -9,8 +9,22 @@ const displayUniverse = (universes) => {
     
   const universesContainer = document.getElementById("universe-container");
   const showAll = document.getElementById('show-all');
+  const limit = (showAll) =>{
+    if(universes.length){
+        return 6;
+    }
+    else if(showAll){
+        return showAll;
+
+    }
+
+  }
+  const show = () => {
+    limit(12)
+
+  }
     if( universes.length > 10) {
-        universes = universes.slice(0, 12);
+        universes = universes.slice(0, limit(showAll));
         showAll.classList.remove('d-none');
     }
     else{
@@ -55,8 +69,8 @@ document.getElementById('btn-search').addEventListener('click', function(){
 
 
 document.getElementById('btn-show-all').addEventListener('click', function(){
-     processSearch(12);
-     })
+    show();
+ })
 
 
 
